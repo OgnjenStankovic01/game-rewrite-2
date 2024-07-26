@@ -1,5 +1,5 @@
 fun main(){
-    var player = playerCreation()
-    var monster = monsterCreation()
+    val player = playerCreation()
+    val monster = monsterCreation()
     combat(monster,player)
 }

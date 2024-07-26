@@ -5,10 +5,13 @@ fun combat(creature: Creature, player: Player){
         println("Player's HP : ${player.hp}, Monster HP : ${creature.hp}")
         println("Choose your action:")
         println("1) Attack")
-        val input = readln().trim().lowercase(Locale.getDefault())
+        val input = readlnOrNull()?.lowercase()?.trim()
         if (input == "1" || input == "attack") {
-            player.attack(creature)
+            player.attack(player,creature)
         }
         else println("Not a valid option")
     }
+    println("You killed the monster! You gain ${creature.xp} xp!")
+    player.xp += creature.xp
+    player.levelup()
 }
