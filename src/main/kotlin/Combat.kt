@@ -15,3 +15,11 @@ fun combat(creature: Creature, player: Player){
     player.xp += creature.xp
     player.levelup()
 }
+fun checkInput(creature: Creature, player: Player){
+    when(readlnOrNull()?.lowercase()?.trim()){
+        "1" -> player.attack(player,creature)
+        "attack" -> player.attack(player,creature)
+        "2" -> player.usePotion()
+        "potion" -> player.usePotion()
+    }
+}
