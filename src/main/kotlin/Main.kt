@@ -1,5 +1,6 @@
 fun main(){
-    val player = playerCreation()
-    val monster = monsterCreation()
+    val playerName = playerName()
+    val player = playerCreation(playerName)
+    val monster = monsterCreation(playerName)
     combat(monster,player)
 }
