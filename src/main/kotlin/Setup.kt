@@ -8,3 +8,16 @@ fun playerCreation(name : String) : Player {
 fun monsterCreation(name : String) : Creature {
     return Creature(name.reversed(), hp = 30, xp = 10, attack = 10, level = 0)
 }
+
+fun spawnPotions(names : List<String>): MutableList<Potion> {
+    var potions : MutableList<Potion> = mutableListOf()
+    names.forEachIndexed{index, s ->
+        if (s.contains("Greater")){
+            potions.add(Potion(index,true,"dsec", s, 20))
+        }
+        else {
+            potions.add(Potion(index,true,"dsec", s, 20))
+        }
+    }
+    return potions
+}

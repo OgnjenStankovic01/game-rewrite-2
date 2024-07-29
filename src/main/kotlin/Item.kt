@@ -1,4 +1,4 @@
-open class Item(val id : Int, val usable : Boolean, val desc : String, val name : String) {
+open class Item(val id : Int, val usable : Boolean, val desc : String, var name : String) {
     override fun toString(): String {
         return name
     }
