@@ -1,12 +1,17 @@
+val cardinalDirection = listOf("North", "South", "West", "East")
+var allMonsters : MutableList<Creature> = mutableListOf()
+
 fun playerName() : String{
     println("Type in your name : ")
     return readln()
 }
 fun playerCreation(name : String) : Player {
-    return Player(name,hp = 30, xp = 0, mana = 30, level = 1, attack = 10, inv = mutableListOf())
+    return Player(name,hp = 30, xp = 0, mana = 30, level = 1, attack = 10, inv = mutableListOf(), position = Position(0,0))
 }
 fun monsterCreation(name : String) : Creature {
-    return Creature(name.reversed(), hp = 30, xp = 10, attack = 10, level = 0)
+    val monster = Creature(name.reversed(), hp = 30, xp = 10, attack = 10, level = 0, position = Position(1,1))
+    allMonsters.add(monster)
+    return monster
 }
 
 fun spawnPotions(names : List<String>): MutableList<Potion> {
@@ -20,4 +25,9 @@ fun spawnPotions(names : List<String>): MutableList<Potion> {
         }
     }
     return potions
+}
+fun printForEach(list: List<String>, format: (String) -> String){
+    list.forEachIndexed{index, s ->
+        println(format(s))
+    }
 }
