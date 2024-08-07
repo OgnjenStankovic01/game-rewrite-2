@@ -1,0 +1,35 @@
+[{
+  "name": "Goblin",
+  "hp" : 20,
+  "xp" : 10,
+  "attack" : 10,
+  "level" : 1,
+  "position": {
+    "x": -1,
+    "y": 1
+  }
+},
+{
+"name": "Skeleton",
+"hp" : 15,
+"xp" : 5,
+"attack" : 5,
+"level" : 0,
+"position": {
+"x": 4,
+"y": 1
+}
+},
+  {
+    "name": "Orc",
+    "hp": 40,
+    "xp": 20,
+    "attack": 10,
+    "level": 2,
+    "position": {
+      "x": 3,
+      "y": 3
+    }
+  }
+]
+

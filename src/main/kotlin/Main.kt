@@ -3,9 +3,9 @@ fun main(){
     val s = spawnPotions(potionNames)
     val playerName = playerName()
     val player = playerCreation(playerName)
-
     s.forEach {
         player.inv.add(it)
     }
-    combat(monsterCreation(playerName),player)
+    monsterCreation()
+    explore(player)
 }

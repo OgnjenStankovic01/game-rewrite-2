@@ -5,4 +5,7 @@ open class Item(val id : Int, val usable : Boolean, val desc : String, var name 
     fun printDesc(): String {
         return desc
     }
+    fun use(){
+
+    }
 }

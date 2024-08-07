@@ -1,5 +1,14 @@
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
+import java.io.File
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
+
 val cardinalDirection = listOf("North", "South", "West", "East")
 var allMonsters : MutableList<Creature> = mutableListOf()
+val gson = Gson()
 
 fun playerName() : String{
     println("Type in your name : ")
@@ -8,10 +17,16 @@ fun playerName() : String{
 fun playerCreation(name : String) : Player {
     return Player(name,hp = 30, xp = 0, mana = 30, level = 1, attack = 10, inv = mutableListOf(), position = Position(0,0))
 }
-fun monsterCreation(name : String) : Creature {
-    val monster = Creature(name.reversed(), hp = 30, xp = 10, attack = 10, level = 0, position = Position(1,1))
-    allMonsters.add(monster)
-    return monster
+
+fun monsterCreation() = runBlocking {
+    val jsonContent = async(Dispatchers.IO){
+        File("C:\\Users\\OgnjenStankovic\\Documents\\Godotgame\\game-rewrite-2\\src\\main\\resources\\Monsters.json").readText()
+    }
+    val monster = async(Dispatchers.Default){
+        val monsterTypeList = object : TypeToken<MutableList<Creature>>() {}.type
+        Gson().fromJson<MutableList<Creature>>(jsonContent.await(), monsterTypeList)
+    }
+    allMonsters = monster.await()
 }
 
 fun spawnPotions(names : List<String>): MutableList<Potion> {

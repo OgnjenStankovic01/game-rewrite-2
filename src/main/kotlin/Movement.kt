@@ -1,7 +1,7 @@
-fun explore(player: Player, fighting : Boolean){
-    while (player.hp > 0 && !checkPosition(player, allMonsters)){
-        println("Choose where to move: ")
-        printForEach(cardinalDirection) {"${cardinalDirection.iterator()} $it"}
+fun explore(player: Player){
+    while (player.hp > 0){
+        println("Choose where to move: (X = ${player.position.x}, Y=${player.position.y})")
+        printForEach(cardinalDirection) { it }
         when(readlnOrNull()?.lowercase()?.trim()){
             "1" -> player.position.moveX(true)
             "north" -> player.position.moveX(true)
@@ -12,9 +12,11 @@ fun explore(player: Player, fighting : Boolean){
             "4" -> player.position.moveY(true)
             "east" -> player.position.moveY(true)
         }
-    }
-    if (checkPosition(player,allMonsters) && player.hp > 0) {
-       TODO()
+        allMonsters.forEach{
+            if (it.position.positionEquality(player.position)) {
+                combat(it,player)
+            }
+        }
     }
 }
 fun checkPosition(player: Player, monsters : MutableList<Creature>) : Boolean{

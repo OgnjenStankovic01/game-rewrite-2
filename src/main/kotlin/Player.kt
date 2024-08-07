@@ -11,9 +11,17 @@ class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, var mana
        }
     }
 
-    fun usePotion() {
+    fun usePotion(player: Player) {
         openInv()
-        println("Choose which item to use: ")
-        readln().lowercase().trim()
+        println("Choose which item to use: (Type '0' to cancel)")
+        val input = readln().lowercase().trim().toInt()
+        val selectedItem = inv[input+1]
+        if (selectedItem is Potion && selectedItem.usable){
+            selectedItem.usePotion(player)
+            println("You have healed for ${selectedItem.healing}")
+        }
+        else if (input == 0) {
+            println("You close your inventory")
+        }
     }
 }

@@ -17,8 +17,8 @@ fun checkInput(creature: Creature, player: Player){
     when(readlnOrNull()?.lowercase()?.trim()){
         "1" -> player.attack(player,creature)
         "attack" -> player.attack(player,creature)
-        "2" -> player.usePotion()
-        "potion" -> player.usePotion()
+        "2" -> player.usePotion(player)
+        "potion" -> player.usePotion(player)
         "3" -> player.openInv()
         "open inventory" -> player.openInv()
     }
