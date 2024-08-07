@@ -10,7 +10,6 @@ class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, var mana
             println("${index+1}) ${item.name}")
        }
     }
-
     fun usePotion(player: Player) {
         openInv()
         println("Choose which item to use: (Type '0' to cancel)")
@@ -25,3 +24,4 @@ class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, var mana
         }
     }
 }
+

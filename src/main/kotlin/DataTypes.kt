@@ -23,4 +23,16 @@ data class Position(var x : Int, var y : Int){
         return 31 * x + y
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Position
+
+        if (x != other.x) return false
+        if (y != other.y) return false
+
+        return true
+    }
+
 }

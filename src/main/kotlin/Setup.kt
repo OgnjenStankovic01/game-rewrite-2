@@ -20,7 +20,7 @@ fun playerCreation(name : String) : Player {
 
 fun monsterCreation() = runBlocking {
     val jsonContent = async(Dispatchers.IO){
-        File("C:\\Users\\OgnjenStankovic\\Documents\\Godotgame\\game-rewrite-2\\src\\main\\resources\\Monsters.json").readText()
+        File("src/main/resources/Monsters.json").readText()
     }
     val monster = async(Dispatchers.Default){
         val monsterTypeList = object : TypeToken<MutableList<Creature>>() {}.type

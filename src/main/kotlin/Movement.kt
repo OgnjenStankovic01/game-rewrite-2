@@ -13,7 +13,7 @@ fun explore(player: Player){
             "east" -> player.position.moveY(true)
         }
         allMonsters.forEach{
-            if (it.position.positionEquality(player.position)) {
+            if (it.position == player.position) {
                 combat(it,player)
             }
         }
@@ -21,7 +21,7 @@ fun explore(player: Player){
 }
 fun checkPosition(player: Player, monsters : MutableList<Creature>) : Boolean{
     monsters.forEach{
-        if (it.position.positionEquality(player.position)){
+        if (it.position == player.position){
             return true
         }
     }

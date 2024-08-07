@@ -1,4 +1,5 @@
 fun main(){
+    monsterCreation()
     val potionNames = listOf("Greater healing potion", "Minor healing potion", "Healing potion")
     val s = spawnPotions(potionNames)
     val playerName = playerName()
@@ -6,6 +7,5 @@ fun main(){
     s.forEach {
         player.inv.add(it)
     }
-    monsterCreation()
     explore(player)
 }
