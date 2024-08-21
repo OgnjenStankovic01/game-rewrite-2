@@ -1,4 +1,4 @@
-class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, var mana : Int, var inv : MutableList<Item>, position: Position) : Creature(name,hp,xp,attack,level,position) {
+class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, var mana : Int, var inv : MutableList<Item>, position: Position, icon: String) : Creature(name,hp,xp,attack,level,position,icon) {
     fun levelup(){
         if (xp >= 30){
             xp = 0

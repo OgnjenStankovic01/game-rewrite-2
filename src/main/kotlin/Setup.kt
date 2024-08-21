@@ -15,7 +15,7 @@ fun playerName() : String{
     return readln()
 }
 fun playerCreation(name : String) : Player {
-    return Player(name,hp = 30, xp = 0, mana = 30, level = 1, attack = 10, inv = mutableListOf(), position = Position(0,0))
+    return Player(name,hp = 30, xp = 0, mana = 30, level = 1, attack = 10, inv = mutableListOf(), position = Position(0,0), icon = "C")
 }
 
 fun monsterCreation() = runBlocking {

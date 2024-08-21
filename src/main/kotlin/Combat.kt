@@ -1,7 +1,7 @@
 import java.util.*
 
 fun combat(creature: Creature, player: Player){
-    while (creature.hp > 0 && player.hp > 0){
+    while (creature.hp > 0 && player.hp > 0 && creature != player){
         checkInput(creature, player)
     }
     println("You killed the monster! You gain ${creature.xp} xp!")
@@ -9,7 +9,7 @@ fun combat(creature: Creature, player: Player){
     player.levelup()
 }
 fun checkInput(creature: Creature, player: Player){
-    println("${player.name}'s HP : ${player.hp}, Monster HP : ${creature.hp}")
+    println("${player.name}'s HP : ${player.hp}, ${creature.name} HP : ${creature.hp}")
     println("Choose your action:")
     println("1) Attack")
     println("2) Use potion")

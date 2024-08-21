@@ -7,7 +7,8 @@
   "position": {
     "x": -1,
     "y": 1
-  }
+  },
+  "icon" : "G"
 },
 {
 "name": "Skeleton",
@@ -18,7 +19,8 @@
 "position": {
 "x": 4,
 "y": 1
-}
+},
+  "icon" : "S"
 },
   {
     "name": "Orc",
@@ -29,7 +31,8 @@
     "position": {
       "x": 3,
       "y": 3
-    }
+    },
+  "icon" : "O"
   }
 ]
 

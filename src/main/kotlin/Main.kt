@@ -4,6 +4,7 @@ fun main(){
     val s = spawnPotions(potionNames)
     val playerName = playerName()
     val player = playerCreation(playerName)
+    allMonsters.add(player)
     s.forEach {
         player.inv.add(it)
     }

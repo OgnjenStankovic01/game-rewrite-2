@@ -1,5 +1,7 @@
 fun explore(player: Player){
     while (player.hp > 0){
+        val overworld = Overworld(5, 5, allMonsters)
+        overworld.drawMap(player)
         println("Choose where to move: (X = ${player.position.x}, Y=${player.position.y})")
         printForEach(cardinalDirection) { it }
         when(readlnOrNull()?.lowercase()?.trim()){
@@ -18,12 +20,4 @@ fun explore(player: Player){
             }
         }
     }
-}
-fun checkPosition(player: Player, monsters : MutableList<Creature>) : Boolean{
-    monsters.forEach{
-        if (it.position == player.position){
-            return true
-        }
-    }
-  return false
 }
