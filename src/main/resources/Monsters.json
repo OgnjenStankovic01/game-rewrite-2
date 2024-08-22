@@ -5,7 +5,7 @@
   "attack" : 10,
   "level" : 1,
   "position": {
-    "x": -1,
+    "x": 1,
     "y": 1
   },
   "icon" : "G"

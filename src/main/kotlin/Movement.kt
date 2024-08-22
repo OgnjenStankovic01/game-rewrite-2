@@ -1,7 +1,7 @@
 fun explore(player: Player){
     while (player.hp > 0){
         val overworld = Overworld(5, 5, allMonsters)
-        overworld.drawMap(player)
+        overworld.drawMap()
         println("Choose where to move: (X = ${player.position.x}, Y=${player.position.y})")
         printForEach(cardinalDirection) { it }
         when(readlnOrNull()?.lowercase()?.trim()){
@@ -13,10 +13,13 @@ fun explore(player: Player){
             "west" -> player.position.moveY(false)
             "4" -> player.position.moveY(true)
             "east" -> player.position.moveY(true)
+            else -> println("Invalid direction, try again")
         }
-        allMonsters.forEach{
-            if (it.position == player.position) {
-                combat(it,player)
+        val encounteredCreature = allMonsters.find { it.position == player.position }
+        if (encounteredCreature != null) {
+            combat(encounteredCreature, player)
+            if (encounteredCreature.hp <= 0) {
+                allMonsters.remove(encounteredCreature)
             }
         }
     }
