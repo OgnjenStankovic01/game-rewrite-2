@@ -5,14 +5,14 @@ fun explore(player: Player){
         println("Choose where to move: (X = ${player.position.x}, Y=${player.position.y})")
         printForEach(cardinalDirection) { it }
         when(readlnOrNull()?.lowercase()?.trim()){
-            "1" -> player.position.moveX(true)
-            "north" -> player.position.moveX(true)
-            "2" -> player.position.moveX(false)
-            "south" ->  player.position.moveX(false)
-            "3" -> player.position.moveY(false)
-            "west" -> player.position.moveY(false)
-            "4" -> player.position.moveY(true)
-            "east" -> player.position.moveY(true)
+            "1" -> player.position.moveX(false)
+            "north" -> player.position.moveX(false)
+            "2" -> player.position.moveX(true)
+            "south" ->  player.position.moveX(true)
+            "3" -> player.position.moveY(true)
+            "west" -> player.position.moveY(true)
+            "4" -> player.position.moveY(false)
+            "east" -> player.position.moveY(false)
             else -> println("Invalid direction, try again")
         }
         val encounteredCreature = allMonsters.find { it.position == player.position }
