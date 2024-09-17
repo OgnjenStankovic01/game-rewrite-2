@@ -3,6 +3,7 @@ class Potion(id : Int, usable : Boolean, desc : String, name : String, var heali
         if (usable && healing > 0){
             println("You use the $name potion")
             player.hp += healing
+            player.inv.remove(this)
         }
     }
 }

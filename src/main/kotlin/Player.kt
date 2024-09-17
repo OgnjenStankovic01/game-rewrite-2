@@ -23,5 +23,8 @@ class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, var mana
             println("You close your inventory")
         }
     }
+    override fun attack(attacker: Creature,defender : Creature){
+        defender.hp -= attacker.attack
+    }
 }
 
