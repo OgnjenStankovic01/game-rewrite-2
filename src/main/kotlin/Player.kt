@@ -13,15 +13,20 @@ class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, var mana
     fun usePotion(player: Player) {
         openInv()
         println("Choose which item to use: (Type '0' to cancel)")
-        val input = readln().lowercase().trim().toInt()
-        val selectedItem = inv[input+1]
-        if (selectedItem is Potion && selectedItem.usable){
-            selectedItem.usePotion(player)
-            println("You have healed for ${selectedItem.healing}")
+        if (inv.isNotEmpty()){
+            val input = readln().lowercase().trim().toInt()
+            val selectedItem = inv[input - 1]
+            if (selectedItem is Potion && selectedItem.usable && selectedItem.healing > 0) {
+                selectedItem.usePotion(player)
+                println("You have healed for ${selectedItem.healing}")
+            } else if (input == 0) {
+                println("You close your inventory")
+            }
         }
-        else if (input == 0) {
-            println("You close your inventory")
+        else {
+            println("You have no items in your inventory")
         }
+
     }
     override fun attack(attacker: Creature,defender : Creature){
         defender.hp -= attacker.attack
