@@ -3,6 +3,10 @@ fun combat(creature: Creature, player: Player){
         checkInput(creature, player)
         if (creature.hp > 0){
             creature.attack(creature,player)
+            if (player.hp <= 0){
+                println("Oh dear, you are dead!")
+                break
+            }
         }
     }
     if (creature.hp <= 0) {

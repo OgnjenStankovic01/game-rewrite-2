@@ -1,4 +1,4 @@
-class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, var mana : Int, var inv : MutableList<Item>, position: Position, icon: String) : Creature(name,hp,xp,attack,level,position,icon) {
+class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, magicSpells: Map<Int, String> = mapOf(), var mana : Int, var inv : MutableList<Item>, position: Position, icon: String) : Creature(name,hp,xp,attack,level,position,icon, magicSpells) {
     fun levelup(){
         if (xp >= 30){
             xp = 0
@@ -19,7 +19,7 @@ class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, var mana
             if (selectedItem is Potion && selectedItem.usable && selectedItem.healing > 0) {
                 selectedItem.usePotion(player)
                 println("You have healed for ${selectedItem.healing}")
-            } else if (input == 0) {
+            } else if (input.equals("0")) {
                 println("You close your inventory")
             }
         }
@@ -30,6 +30,10 @@ class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, var mana
     }
     override fun attack(attacker: Creature,defender : Creature){
         defender.hp -= attacker.attack
+    }
+
+    override fun magicAttack(attacker: Creature, defender: Creature, spell: Spell) {
+
     }
 }
 

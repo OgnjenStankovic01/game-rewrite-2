@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken
 
 val cardinalDirection = listOf("North", "South", "West", "East")
 var allMonsters : MutableList<Creature> = mutableListOf()
+var allSpells : MutableList<Spell> = mutableListOf()
 val gson = Gson()
 
 fun playerName() : String{
@@ -15,7 +16,7 @@ fun playerName() : String{
     return readln()
 }
 fun playerCreation(name : String) : Player {
-    return Player(name,hp = 30, xp = 0, mana = 30, level = 1, attack = 10, inv = mutableListOf(), position = Position(0,0), icon = "C")
+    return Player(name,hp = 30, xp = 0, mana = 30, level = 1, attack = 10, inv = mutableListOf(), magicSpells = mapOf(), position = Position(0,0), icon = "C")
 }
 
 fun monsterCreation() = runBlocking {
@@ -27,6 +28,16 @@ fun monsterCreation() = runBlocking {
         Gson().fromJson<MutableList<Creature>>(jsonContent.await(), monsterTypeList)
     }
     allMonsters = monster.await()
+}
+fun batchSpells() = runBlocking {
+    val jsonContent = async(Dispatchers.IO) {
+        File("src/main/resources/Spells.json").readText()
+    }
+    val spell = async(Dispatchers.Default) {
+        val spellList = object : TypeToken<MutableList<Spell>>() {}.type
+        Gson().fromJson<MutableList<Spell>>(jsonContent.await(), spellList)
+    }
+    allSpells = spell.await()
 }
 
 fun spawnPotions(names : List<String>): MutableList<Potion> {
