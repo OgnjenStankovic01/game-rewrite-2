@@ -3,19 +3,22 @@
   "cost" : 10,
   "desc" : "A bolt of fire, deals 20 damage and costs 10 mana",
   "time" : 1,
-  "damage" : 20
+  "damage" : 20,
+  "tag" : "damage"
 },
   {
     "name": "Frost bolt",
     "cost" : 5 ,
     "desc" : "A bolt of ice, deals 10 damage and costs 5 mana" ,
     "time" :1 ,
-    "damage" : 10
+    "damage" : 10,
+    "tag" : "damage"
   },
   {
     "name": "Poison bolt",
     "cost" : "15",
     "desc" : "Poisons the enemy, deals 25 damage over 5 turns" ,
     "time" : 5,
-    "damage" : 5
+    "damage" : 5,
+    "tag" : "damage"
   }]

@@ -17,7 +17,7 @@ open class Creature (var name : String,var hp : Int, var xp : Int, var attack : 
             generateBoolean().let {
                 if (it){
                     println("The ${attacker.name} casts ${spell.name}")
-                    spell.useSpell(attacker,defender,spell.name,spell.cost,spell.time,spell.damage)
+                    spell.useSpell(attacker,defender,spell)
                 }
                 else {
                     println("The ${attacker.name} casts ${spell.name}")
@@ -26,4 +26,11 @@ open class Creature (var name : String,var hp : Int, var xp : Int, var attack : 
             }
         }
     }
+    open fun knowsByName(magicSpells: Map<Int, String>, spellName: String): Boolean{
+        if (magicSpells.containsValue(spellName)) {
+            return true
+        }
+        else return false
+    }
+
 }

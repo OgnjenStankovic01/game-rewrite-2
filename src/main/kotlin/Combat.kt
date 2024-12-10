@@ -8,14 +8,17 @@ fun combat(creature: Creature, player: Player){
                 break
             }
         }
+        TURNS++
     }
     if (creature.hp <= 0) {
         println("You killed the monster! You gain ${creature.xp} xp!")
         player.xp += creature.xp
         player.levelup()
+        TURNS = 0
     }
 }
 fun checkInput(creature: Creature, player: Player){
+    println("Turn : $TURNS")
     println("${player.name}'s HP : ${player.hp}, ${creature.name} HP : ${creature.hp}")
     println("Choose your action:")
     println("1) Attack")

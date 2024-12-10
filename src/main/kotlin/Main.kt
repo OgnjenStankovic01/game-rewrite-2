@@ -1,4 +1,6 @@
+var TURNS = 0
 fun main(){
+    batchSpells()
     monsterCreation()
     val potionNames = listOf("Greater healing potion", "Minor healing potion", "Healing potion")
     val s = spawnPotions(potionNames)

@@ -33,7 +33,10 @@ class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, magicSpe
     }
 
     override fun magicAttack(attacker: Creature, defender: Creature, spell: Spell) {
-
+        if (this.mana >= spell.cost){
+            spell.useSpell(attacker, defender, spell)
+        }
+        else println("YOU HAVE NO MANAAA")
     }
 }
 
