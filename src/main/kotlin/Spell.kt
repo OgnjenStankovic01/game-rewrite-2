@@ -4,7 +4,7 @@ data class Spell(val name: String, val cost: Int, val desc: String, val time: In
         if (attacker.knowsByName(attacker.magicSpells, spell.name)) {
             if (spell.tag == "damage") {
                 var i = 1
-                while (i < time) {
+                while (i <= time) {
                     defender.hp -= spell.damage
                 }
             }

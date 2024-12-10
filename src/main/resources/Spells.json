@@ -20,5 +20,5 @@
     "desc" : "Poisons the enemy, deals 25 damage over 5 turns" ,
     "time" : 5,
     "damage" : 5,
-    "tag" : "damage"
+    "tag" : "dot"
   }]
