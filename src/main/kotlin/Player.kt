@@ -1,4 +1,4 @@
-class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, magicSpells: Map<Int, String> = mapOf(), var mana : Int, var inv : MutableList<Item>, position: Position, icon: String) : Creature(name,hp,xp,attack,level,position,icon, magicSpells) {
+class Player(name : String, hp : Int, xp : Int, level : Int, attack : Int, magicSpells: List<Spell> = listOf(), var mana : Int, var inv : MutableList<Item>, position: Position, icon: String) : Creature(name,hp,xp,attack,level,position,icon, magicSpells) {
     fun levelup(){
         if (xp >= 30){
             xp = 0
@@ -32,10 +32,16 @@ class Player(name : String, hp : Int,xp : Int,level : Int,attack : Int, magicSpe
         defender.hp -= attacker.attack
     }
 
-    override fun magicAttack(attacker: Creature, defender: Creature, spell: Spell) {
-        if (this.mana >= spell.cost){
-            spell.useSpell(attacker, defender, spell)
+    fun castSpell(player: Player,attacker: Creature){
+        player.magicSpells.forEachIndexed { index, spell ->
+            println("${index+1}) ${spell.name}")
         }
+        println("Choose a spell: ")
+        val spell = readln().lowercase().toInt()
+        val selectedItem = player.magicSpells[spell-1]
+        if (player.mana >= selectedItem.cost) {
+                selectedItem.useSpell(attacker,player, selectedItem)
+            }
         else println("YOU HAVE NO MANAAA")
     }
 }

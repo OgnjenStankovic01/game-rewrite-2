@@ -23,13 +23,13 @@ fun checkInput(creature: Creature, player: Player){
     println("Choose your action:")
     println("1) Attack")
     println("2) Use potion")
-    println("3) Open inventory")
+    println("3) Cast spell")
     when(readlnOrNull()?.lowercase()?.trim()){
         "1" -> player.attack(player,creature)
         "attack" -> player.attack(player,creature)
         "2" -> player.usePotion(player)
         "potion" -> player.usePotion(player)
-        "3" -> player.openInv()
+        "3" -> player.castSpell(player,creature)
         "open inventory" -> player.openInv()
     }
 }

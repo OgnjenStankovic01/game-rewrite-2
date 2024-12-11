@@ -1,4 +1,4 @@
-open class Creature (var name : String,var hp : Int, var xp : Int, var attack : Int, var level : Int, val position: Position, val icon: String, var magicSpells: Map<Int, String> = mapOf()) {
+open class Creature (var name : String,var hp : Int, var xp : Int, var attack : Int, var level : Int, val position: Position, val icon: String, var magicSpells: List<Spell> = listOf()) {
     open fun attack(attacker: Creature, defender : Creature){
         if (defender is Player){
             generateBoolean().let {
@@ -17,7 +17,7 @@ open class Creature (var name : String,var hp : Int, var xp : Int, var attack : 
             generateBoolean().let {
                 if (it){
                     println("The ${attacker.name} casts ${spell.name}")
-                    spell.useSpell(attacker,defender,spell)
+                    spell.useSpell(attacker,defender, spell)
                 }
                 else {
                     println("The ${attacker.name} casts ${spell.name}")
@@ -26,11 +26,14 @@ open class Creature (var name : String,var hp : Int, var xp : Int, var attack : 
             }
         }
     }
-    open fun knowsByName(magicSpells: Map<Int, String>, spellName: String): Boolean{
-        if (magicSpells.containsValue(spellName)) {
-            return true
-        }
-        else return false
+    open fun knowsByName(magicSpells: List<Spell>, spellName: String): Boolean{
+        var returnVar = false
+       magicSpells.forEach{
+           if(it.name == spellName){
+               returnVar = true
+           }
+           else returnVar = false
+       }
+        return returnVar
     }
-
 }
