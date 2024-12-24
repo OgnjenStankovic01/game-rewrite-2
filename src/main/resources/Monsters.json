@@ -8,7 +8,8 @@
     "x": 1,
     "y": 1
   },
-  "icon" : "G"
+  "icon" : "G",
+  "magicSpells" : []
 },
 {
 "name": "Skeleton",
@@ -20,7 +21,8 @@
 "x": 4,
 "y": 1
 },
-  "icon" : "S"
+  "icon" : "S",
+  "magicSpells" : []
 },
   {
     "name": "Orc",
@@ -32,7 +34,8 @@
       "x": 3,
       "y": 3
     },
-  "icon" : "O"
+  "icon" : "O",
+    "magicSpells" : []
   }
 ]
 

@@ -26,14 +26,5 @@ open class Creature (var name : String,var hp : Int, var xp : Int, var attack : 
             }
         }
     }
-    open fun knowsByName(magicSpells: List<Spell>, spellName: String): Boolean{
-        var returnVar = false
-       magicSpells.forEach{
-           if(it.name == spellName){
-               returnVar = true
-           }
-           else returnVar = false
-       }
-        return returnVar
-    }
+
 }

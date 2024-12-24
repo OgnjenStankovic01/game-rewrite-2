@@ -36,13 +36,17 @@ class Player(name : String, hp : Int, xp : Int, level : Int, attack : Int, magic
         player.magicSpells.forEachIndexed { index, spell ->
             println("${index+1}) ${spell.name}")
         }
-        println("Choose a spell: ")
-        val spell = readln().lowercase().toInt()
-        val selectedItem = player.magicSpells[spell-1]
-        if (player.mana >= selectedItem.cost) {
+        if (player.magicSpells.isNotEmpty()){
+            println("Choose a spell: ")
+            val spell = readln().lowercase().toInt()
+            val selectedItem = player.magicSpells[spell-1]
+            if (player.mana >= selectedItem.cost) {
                 selectedItem.useSpell(attacker,player, selectedItem)
+                println("You cast ${selectedItem.name}")
             }
-        else println("YOU HAVE NO MANAAA")
+            else println("YOU HAVE NO MANAAA")
+        }
+        else println("You know no spells.")
     }
 }
 
