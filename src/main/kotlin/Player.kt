@@ -1,8 +1,13 @@
-class Player(name : String, hp : Int, xp : Int, level : Int, attack : Int, magicSpells: List<Spell> = listOf(), var mana : Int, var inv : MutableList<Item>, position: Position, icon: String) : Creature(name,hp,xp,attack,level,position,icon, magicSpells) {
+class Player(name : String, var maxHp : Int, var maxMana : Int, hp : Int, xp : Int, level : Int, attack : Int, magicSpells: List<Spell> = listOf(), var mana : Int, var inv : MutableList<Item>, position: Position, icon: String) : Creature(name,hp,xp,attack,level,position,icon, magicSpells) {
     fun levelup(){
         if (xp >= 30){
+            println("You've levelled up!")
             xp = 0
             level++
+            maxHp += 10
+            hp = maxHp
+            maxMana += 10
+            mana = maxMana
         }
     }
     fun openInv(){
@@ -32,7 +37,7 @@ class Player(name : String, hp : Int, xp : Int, level : Int, attack : Int, magic
         defender.hp -= attacker.attack
     }
 
-    fun castSpell(player: Player,attacker: Creature){
+    fun castSpell(player: Player, defender : Creature){
         player.magicSpells.forEachIndexed { index, spell ->
             println("${index+1}) ${spell.name}")
         }
@@ -40,9 +45,11 @@ class Player(name : String, hp : Int, xp : Int, level : Int, attack : Int, magic
             println("Choose a spell: ")
             val spell = readln().lowercase().toInt()
             val selectedItem = player.magicSpells[spell-1]
-            if (player.mana >= selectedItem.cost) {
-                selectedItem.useSpell(attacker,player, selectedItem)
+            if (player.mana >= selectedItem.cost && player.mana - selectedItem.cost > 0) {
+                defender.hp -= selectedItem.damage
+                player.mana -= selectedItem.cost
                 println("You cast ${selectedItem.name}")
+                println("You deal ${selectedItem.damage} damage!")
             }
             else println("YOU HAVE NO MANAAA")
         }

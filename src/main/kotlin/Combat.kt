@@ -19,7 +19,8 @@ fun combat(creature: Creature, player: Player){
 }
 fun checkInput(creature: Creature, player: Player){
     println("Turn : $TURNS")
-    println("${player.name}'s HP : ${player.hp}, ${creature.name} HP : ${creature.hp}")
+    println("${player.name}'s HP : ${player.hp}, Mana : ${player.mana}")
+    println("${creature.name} HP : ${creature.hp}")
     println("Choose your action:")
     println("1) Attack")
     println("2) Use potion")
